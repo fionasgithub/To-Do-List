@@ -16,39 +16,69 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="container" id="app">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav m-auto">
-                <li class="nav-item active">
-                    <a class="btn btn-primary mr-2" href="#">My Tasks</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="btn btn-primary mr-2" href="#">In Progress</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="btn btn-primary mr-2" href="#">Completed</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item active">
+                        <a class="btn btn-primary mr-2" href="#">My Tasks</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="btn btn-primary mr-2" href="#">In Progress</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="btn btn-primary mr-2" href="#">Completed</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="row m-3">
             <div class="col">
                 <div class="input-group-append">
-                    <input class="form-control" type="text" placeholder="+ Add task">
-                    <button class="btn btn-primary" type="button">Add</button>
+                    <input @keyup.enter="createItem" class="form-control" type="text" placeholder="+ Add task">
                 </div>
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col">
+                <ul class="list-group text-secondary">
+                    <li class="list-group-item" v-bind:class="{'list-group-item-success': todo.finish}" v-for="(todo, index) in todos">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" v-model="todo.finish">
+                            <label class="form-check-label" for="defaultCheck1" v-show="!todo.editMode">
+                                <span v-if="todo.finish === false">{{todo.content}}</span>
+                                <span v-else>
+                                    <del>
+                                        {{todo.content}}
+                                    </del>
+                                </span>
+                            </label>
+                            <input class="form-control" type="text" value="todo.content" v-show="todo.editMode" v-model="todo.content" @keyup.enter="todo.editMode = false">
+                            <div class="d-inline mr-auto">
+                                <i class="fas fa-pencil-alt" @click="todo.editMode = !todo.editMode"></i>
+                                <i class="fas fa-trash-alt" @click="removeItem(index)"></i>
+                            </div>
+                            <div>
+                                <i class="far fa-star"></i>
+                                <i class="fas fa-calendar-alt"></i>
+                                <i class="far fa-file"></i>
+                                <i class="far fa-comment-dots"></i>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="row m-3">
             <div class="col">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body text-secondary">
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
                             <label class="form-check-label" for="defaultCheck2">
@@ -85,94 +115,45 @@
                 </div>
             </div>
         </div>
-        <div class="row m-3">
-            <div class="col">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-pencil-alt"></i>
-                            <i class="fas fa-trash-alt"></i>
-                            <i class="fas fa-calendar-alt"></i>
-                            <i class="far fa-file"></i>
-                            <i class="far fa-comment-dots"></i>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-pencil-alt"></i>
-                            <i class="fas fa-trash-alt"></i>
-                            <i class="fas fa-calendar-alt"></i>
-                            <i class="far fa-file"></i>
-                            <i class="far fa-comment-dots"></i>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-pencil-alt"></i>
-                            <i class="fas fa-trash-alt"></i>
-                            <i class="fas fa-calendar-alt"></i>
-                            <i class="far fa-file"></i>
-                            <i class="far fa-comment-dots"></i>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-pencil-alt"></i>
-                            <i class="fas fa-trash-alt"></i>
-                            <i class="fas fa-calendar-alt"></i>
-                            <i class="far fa-file"></i>
-                            <i class="far fa-comment-dots"></i>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
-                            </label>
-                            <i class="far fa-star"></i>
-                            <i class="fas fa-pencil-alt"></i>
-                            <i class="fas fa-trash-alt"></i>
-                            <i class="fas fa-calendar-alt"></i>
-                            <i class="far fa-file"></i>
-                            <i class="far fa-comment-dots"></i>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
-    <div id="app-3">
-        <span v-if="seen">Now you see me</span>
-    </div>
-
 
     <script>
-        var app3 = new Vue({
-            el: '#app-3',
+        var app = new Vue({
+            el: '#app',
             data: {
-                seen: false
-            }
+                todos: [{
+                        content: 'todo-item-1',
+                        editMode: false,
+                        finish: false,
+                    },
+                    {
+                        content: 'todo-item-2',
+                        editMode: false,
+                        finish: false,
+                    },
+                    {
+                        content: 'todo-item-3',
+                        editMode: false,
+                        finish: false,
+                    },
+                ],
+            },
+            methods: {
+                createItem(event) {
+                    if (event.target.value.trim() === "") {
+                        alert('請輸入待辦事項')
+                    } else {
+                        this.todos.push({
+                            content: event.target.value
+                        })
+                    }
+                    event.target.value = ""
+                },
+                removeItem(index) {
+                    this.todos.splice(index, 1)
+                    console.log(index)
+                }
+            },
         })
     </script>
 
