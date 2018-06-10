@@ -5,10 +5,176 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
     <title>ToDoList_Vue</title>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item active">
+                    <a class="btn btn-primary mr-2" href="#">My Tasks</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary mr-2" href="#">In Progress</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="btn btn-primary mr-2" href="#">Completed</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row m-3">
+            <div class="col">
+                <div class="input-group-append">
+                    <input class="form-control" type="text" placeholder="+ Add task">
+                    <button class="btn btn-primary" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                            <label class="form-check-label" for="defaultCheck2">
+                                Disabled checkbox
+                            </label>
+                        </div>
+                        <label for="basic-url">
+                            <i class="fas fa-calendar-alt pr-1"></i>Deadline</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="yyyy/mm/dd" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="mm:ss" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlFile1">
+                                        <i class="far fa-file pr-1"></i>File</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">
+                                        <i class="far fa-comment-dots pr-1"></i>Comment</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Default checkbox
+                            </label>
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="far fa-file"></i>
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Default checkbox
+                            </label>
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="far fa-file"></i>
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Default checkbox
+                            </label>
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="far fa-file"></i>
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Default checkbox
+                            </label>
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="far fa-file"></i>
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Default checkbox
+                            </label>
+                            <i class="far fa-star"></i>
+                            <i class="fas fa-pencil-alt"></i>
+                            <i class="fas fa-trash-alt"></i>
+                            <i class="fas fa-calendar-alt"></i>
+                            <i class="far fa-file"></i>
+                            <i class="far fa-comment-dots"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="app-3">
+        <span v-if="seen">Now you see me</span>
+    </div>
+
+
+    <script>
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                seen: false
+            }
+        })
+    </script>
 
 </body>
 

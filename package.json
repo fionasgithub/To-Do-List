@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/fionasgithub/To-Do-List/issues"
   },
-  "homepage": "https://github.com/fionasgithub/To-Do-List#readme"
+  "homepage": "https://github.com/fionasgithub/To-Do-List#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "node-sass": "^4.9.0",
+    "popper.js": "^1.14.3",
+    "vue": "^2.5.16"
+  }
 }
