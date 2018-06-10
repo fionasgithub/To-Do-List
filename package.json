@@ -1,0 +1,22 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "the f2e w1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/fionasgithub/To-Do-List.git"
+  },
+  "keywords": [
+    "to-do-list"
+  ],
+  "author": "Fiona",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fionasgithub/To-Do-List/issues"
+  },
+  "homepage": "https://github.com/fionasgithub/To-Do-List#readme"
+}
